@@ -1,0 +1,6 @@
+---
+# defaults file for python-dev
+dev_user: 'lyrch'
+dev_user_shell: 'zsh'
+dev_user_rc_file: '{{ dev_user_shell }}rc'
+pyenv_root: 'PYENV_ROOT="$HOME/.pyenv'

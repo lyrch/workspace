@@ -1,0 +1,6 @@
+---
+# defaults file for base-dev
+dev_user: 'lyrch'
+authorized_keys:
+  - https://github.com/lyrch.keys
+

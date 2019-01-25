@@ -1,0 +1,9 @@
+---
+# vars file for base-dev
+dev_packages:
+  - vim
+  - git
+  - openssh
+  - mosh
+  - zsh
+    #  - docker 

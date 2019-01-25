@@ -1,0 +1,26 @@
+---
+# tasks file for base-dev
+
+- name: Install dev packages
+  package:
+    name: '{{ dev_packages }}'
+    state: present
+
+- name: Disable password authentication for ssh
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Create dev user
+  user: 
+    name: '{{ dev_user }}'
+    shell: /bin/zsh
+
+- name: Add authorized keys file
+  authorized_key:
+    user: '{{ dev_user }}'
+    state: present
+    key: '{{ authorized_keys }}'

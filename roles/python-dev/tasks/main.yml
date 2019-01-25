@@ -1,0 +1,25 @@
+---
+# tasks file for python-dev
+
+- name: Install pyenv
+  command: curl https://pyenv.run | bash
+  become: '{{ dev_user }}'
+
+# Assuming git is installed from base-dev role
+- name: Install pyenv virtualenv
+  git: 
+    repo: https://github.com/pyenv/pyenv.git
+    dest: /home/{{ dev_user }}/.pyenv
+
+- name: Add PYENV_ROOT variable to the shell rc file
+  command: echo 'export PYENV_ROOT={{ pyenv_root }}' >> ~/.{{ dev_user_rc_file }}
+  
+- name: Add pyenv to the PATH variable to the shell rc file
+  command: echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.{{ dev_user_rc_file }}
+
+- name: Add pyenv init to the shell rc file
+  command: echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\n  eval "$(pyenv virtualenv-init -)"\nfi' >> ~/.bash_profile
+
+
+- name: Install Python 3.7
+    command: pyenv install 

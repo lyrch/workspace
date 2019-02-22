@@ -1,5 +1,5 @@
 ---
-# vars file for base-dev
+
 dev_packages:
   - vim
   - git
@@ -7,4 +7,5 @@ dev_packages:
   - openssh-server
   - mosh
   - zsh
-    #  - docker 
+  - tmux
+  - rcm

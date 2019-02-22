@@ -8,6 +8,11 @@ lint:
 platforms:
   - name: instance
     image: fedora:29
+    privileged: True
+    exposed_ports:
+      - 22/udp
+      - 22/tcp
+    command: /usr/sbin/init
 provisioner:
   name: ansible
   lint:

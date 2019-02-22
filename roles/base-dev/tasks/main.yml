@@ -6,14 +6,6 @@
     name: '{{ dev_packages }}'
     state: present
 
-- name: Disable password authentication for ssh
-  copy:
-    src: sshd_config
-    dest: /etc/ssh/sshd_config
-    owner: root
-    group: root
-    mode: 0644
-
 - name: Create dev user
   user: 
     name: '{{ dev_user }}'
@@ -23,4 +15,10 @@
   authorized_key:
     user: '{{ dev_user }}'
     state: present
-    key: '{{ authorized_keys }}'
+    key: '{{ item }}'
+  with_items: "{{ authorized_keys }}"
+
+- name: Start sshd service
+  systemd:
+    state: started
+    name: sshd

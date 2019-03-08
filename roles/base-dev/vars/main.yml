@@ -8,4 +8,7 @@ dev_packages:
   - mosh
   - zsh
   - tmux
+
+dotfile_packages:
   - rcm
+  - hostname

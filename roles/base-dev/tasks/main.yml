@@ -1,5 +1,4 @@
 ---
-# tasks file for base-dev
 
 - name: Install dev packages
   package:
@@ -22,3 +21,16 @@
   systemd:
     state: started
     name: sshd
+
+- name: Install dotfile packages
+  package:
+    name: '{{ dotfile_packages }}'
+    state: present
+
+- name: Fetch dotfiles
+  git:
+    repo: https://github.com/lyrch/dotfiles.git
+    dest: '/home/{{ dev_user }}/.dotfiles'
+
+- name: Link dotfiles
+  command: rcup -f -d '/home/{{ dev_user}}/.dotfiles'

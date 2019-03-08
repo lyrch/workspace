@@ -7,6 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: instance
+    hostname: instance
     image: fedora:29
     privileged: True
     exposed_ports:

@@ -10,5 +10,6 @@ dev_packages:
   - tmux
 
 dotfile_packages:
-  - rcm
+  - curl
   - hostname
+  - rcm

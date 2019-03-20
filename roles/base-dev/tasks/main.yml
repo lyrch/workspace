@@ -31,6 +31,16 @@
   git:
     repo: https://github.com/lyrch/dotfiles.git
     dest: '/home/{{ dev_user }}/.dotfiles'
+  become: true
+  become_user: '{{ dev_user}}'
 
 - name: Link dotfiles
   command: rcup -f -d '/home/{{ dev_user}}/.dotfiles'
+  become: true
+  become_user: '{{ dev_user}}'
+
+# Not sure why this is hanging, skip this for now and move on
+# - name: Bootstrap vim
+#   command: "env VIMRC_FORCE_BOOTSTRAP=1 vim -c ':qa!'"
+#   become: true
+#   become_user: '{{ dev_user}}'

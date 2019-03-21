@@ -13,6 +13,9 @@ platforms:
     exposed_ports:
       - 22/udp
       - 22/tcp
+    published_ports:
+      - 0.0.0.0:2022:22/tcp
+      - 0.0.0.0:2022:22/udp
     command: /usr/sbin/init
 provisioner:
   name: ansible
